@@ -1,24 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState } from "react";
+import QuizContainer from "./QuizContainer";
+import { getQuestions } from "./services/api_service";
+import { Container, Title, Button, Card } from "./utils/styled";
 
 function App() {
+  const [start, setStart] = useState(false);
+  const [questions, setQuestions] = useState([]);
+  useEffect(() => {
+    getQuestions().then((response) => {
+      //console.log(response.data.results);
+      setQuestions(response.data.results);
+    });
+  }, []);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container>
+      <Title size="large">Quiz</Title>
+      {start ? (
+        <QuizContainer questions={questions} />
+      ) : (
+        <Card>
+          <Button onClick={() => setStart(true)}>start</Button>
+        </Card>
+      )}
+    </Container>
   );
 }
 
