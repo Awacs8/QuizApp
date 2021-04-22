@@ -1,6 +1,7 @@
 import React, { useState } from "react";
+import { CardContainer } from "./utils/styled";
 import QuizCard from "./QuizCard";
-import { CardContainer, Button } from "./utils/styled";
+import GameOver from "./GameOver";
 import SideBar from "./SideBar";
 
 const QuizContainer = ({ questions }) => {
@@ -8,11 +9,10 @@ const QuizContainer = ({ questions }) => {
   const [points, setPoints] = useState(0);
   const questionData = questions[selected];
 
-  const question = questionData.question;
-  const answers = [
-    questionData.correct_answer,
-    ...questionData.incorrect_answers,
-  ].sort();
+  const question = questionData && questionData.question;
+  const answers =
+    questionData &&
+    [questionData.correct_answer, ...questionData.incorrect_answers].sort();
 
   const handleClick = (el) => {
     if (el === questionData.correct_answer) {
@@ -23,16 +23,18 @@ const QuizContainer = ({ questions }) => {
 
   return (
     <>
-      <SideBar selected={selected} points={points} />
-      <CardContainer>
-        <QuizCard
-          question={question}
-          answers={answers}
-          handleClick={handleClick}
-          setPoints={setPoints}
-        />
+      {selected < 10 && <SideBar selected={selected} points={points} />}
 
-        {selected === 10 && <Button>TryAgain</Button>}
+      <CardContainer>
+        {questionData ? (
+          <QuizCard
+            question={question}
+            answers={answers}
+            handleClick={handleClick}
+          />
+        ) : (
+          <GameOver points={points} />
+        )}
       </CardContainer>
     </>
   );
