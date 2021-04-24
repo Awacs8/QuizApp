@@ -53,13 +53,19 @@ export const Button = styled.button`
   font-weight: 700;
   border: 3px solid black;
   border-radius: 10px;
-  width: 200px;
-  height: 50px;
+  min-width: 200px;
+  min-height: 50px;
   padding: 1px 4px;
   :hover {
     background-color: rgba(42, 42, 42, 0.5);
     color: black;
   }
+`;
+
+export const Icon = styled.img`
+  width: 30px;
+  height: 30px;
+  margin-left: 20px;
 `;
 
 export const Aside = styled.aside`

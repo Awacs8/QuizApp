@@ -7,18 +7,19 @@ import SideBar from "./SideBar";
 const QuizContainer = ({ questions }) => {
   const [selected, setSelected] = useState(0);
   const [points, setPoints] = useState(0);
-  const questionData = questions[selected];
+  const [checked, setChecked] = useState(false);
+  const quizData = questions[selected];
 
-  const question = questionData && questionData.question;
-  const answers =
-    questionData &&
-    [questionData.correct_answer, ...questionData.incorrect_answers].sort();
-
-  const handleClick = (el) => {
-    if (el === questionData.correct_answer) {
+  const handleClick = (answer) => {
+    if (answer === quizData.correct_answer) {
       setPoints(points + 1);
     }
-    setSelected(selected + 1);
+    setChecked(true);
+
+    setTimeout(() => {
+      setChecked(false);
+      setSelected(selected + 1);
+    }, 1000);
   };
 
   return (
@@ -26,10 +27,10 @@ const QuizContainer = ({ questions }) => {
       {selected < 10 && <SideBar selected={selected} points={points} />}
 
       <CardContainer>
-        {questionData ? (
+        {quizData ? (
           <QuizCard
-            question={question}
-            answers={answers}
+            quizData={quizData}
+            checked={checked}
             handleClick={handleClick}
           />
         ) : (
