@@ -1,0 +1,20 @@
+{
+  "short_name": "Quiz App",
+  "name": "Test your knowledge",
+  "icons": [
+    {
+      "src": "quiz.png",
+      "type": "image/png",
+      "sizes": "128x128"
+    },
+    {
+      "src": "bulb.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
