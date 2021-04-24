@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { CardContainer } from "./utils/styled";
-import QuizCard from "./QuizCard";
-import GameOver from "./GameOver";
-import SideBar from "./SideBar";
+import { CardContainer } from "../utils/styled";
+import QuizCard from "../components/QuizCard";
+import GameOver from "../components/GameOver";
+import SideBar from "../components/SideBar";
 
 const QuizContainer = ({ questions }) => {
   const [selected, setSelected] = useState(0);

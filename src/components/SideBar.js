@@ -1,5 +1,5 @@
 import React from "react";
-import { Aside, Title } from "./utils/styled";
+import { Aside, Title } from "../utils/styled";
 
 const SideBar = ({ selected, points }) => {
   return (

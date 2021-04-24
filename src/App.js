@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import QuizContainer from "./QuizContainer";
+import QuizContainer from "./containers/QuizContainer";
 import { getQuestions } from "./services/api_service";
 import { Container, Title, Button, Card } from "./utils/styled";
 

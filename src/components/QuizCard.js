@@ -1,6 +1,6 @@
 import React from "react";
-import { Button, Title, Card, Icon } from "./utils/styled";
-import right from "./utils/img/right.png";
+import { Button, Title, Card, Icon } from "../utils/styled";
+import right from "../utils/img/right.png";
 
 const QuizCard = ({ quizData, handleClick, checked }) => {
   const question = quizData && quizData.question;
